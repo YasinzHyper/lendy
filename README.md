@@ -105,7 +105,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
-
+```
 
 
 ## Potential Issues
@@ -115,36 +115,20 @@ If Scoring Engine API fails, the loan is still created, but scoring is delayed.
 
 If the Celery worker isn't running, loan scores won't be retrieved automatically.
 
-# How to run
-## With Docker
-This is the most straightforward way to run the project. 
-Just rename .env.sample to .env then type docker compose up
-You must have docker and dockerc ompose installed
-You can then exec into the container and run the migrations
-```bash
-docker exec -it lms bash
-```
-Then run the migrations
-```bash
-python manage.py migrate
-```
-Create a superuser
-```bash
-python manage.py createsuperuser
-```
+## How to run
 
 ## Without Docker
-Make sure you have virtualenv installed
-```bash
-pip install virtualenv
-```
+
+1. Rename `.env.sample` to `.env`
+---
 Create a virtual environment
 ```bash
-virtualenv venv
+python -m venv venv
 ```
 Activate the virtual environment
 ```bash
-source venv/bin/activate
+./venv/scripts/activate # Windows
+source venv/bin/activate # Linux
 ```
 Install the required packages
 ```bash
@@ -161,4 +145,21 @@ python manage.py createsuperuser
 Run the server
 ```bash
 python manage.py runserver
+```
+
+## With Docker
+This is the most straightforward way to run the project. 
+Just rename .env.sample to .env then type docker compose up
+You must have docker and dockerc ompose installed
+You can then exec into the container and run the migrations
+```bash
+docker exec -it lms bash
+```
+Then run the migrations
+```bash
+python manage.py migrate
+```
+Create a superuser
+```bash
+python manage.py createsuperuser
 ```
